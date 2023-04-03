@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.11.0/css/jquery.dataTables.min.css"
+    />
+    <script
+      type="text/javascript"
+      charset="utf8"
+      src="/static/js/jquery-min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      charset="utf8"
+      src="https://cdn.datatables.net/1.11.0/js/jquery.dataTables.min.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="/static/css/master-styles.css" />
+    <script
+      type="text/javascript"
+      charset="utf8"
+      src="/static/js/moment.js"
+    ></script>
+    <script
+      type="text/javascript"
+      charset="utf8"
+      src="/static/js/datetime-moment.js"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script
+      type="text/javascript"
+      charset="utf8"
+      src="/static/js/master.js"
+    ></script>
+    <script
+      type="text/javascript"
+      charset="utf8"
+      src="/extractor/js/updater.js"
+    ></script>
+  </head>
+  <body>
+    <div id="interface">
+      <h1 style="margin-bottom: 20px">Storymap Central Hub</h1>
+      <table id="datatable" class="display">
+        <thead>
+          <tr>
+            <th>Map ID</th>
+            <th>Map Name</th>
+            <th>Datetime</th>
+            <th>Version</th>
+            <th>Actions</th>
+          </tr>
+          <tr>
+            <th colspan="0.8" id="new">Add New Map</th>
+            <th colspan="0.9" id="mapn">
+              <input
+                type="text"
+                style="width: 96%"
+                id="mapName"
+                data-toggle="validator"
+                placeholder="Map Name"
+                oninput="editText(this);"
+              />
+            </th>
+            <th colspan="1.7">
+              <input
+                type="text"
+                style="width: 96%"
+                id="mapID"
+                data-toggle="popover"
+                placeholder="Map Url"
+                oninput="editText(this);"
+              />
+            </th>
+            <th colspan="0.8" id="act">
+              <input
+                type="image"
+                onclick="addMap();"
+                title="Add"
+                src="/static/images/add.png"
+                width="25px"
+              /><input
+                type="image"
+                onclick="refreshTable();"
+                title="Refresh"
+                src="/static/images/refresh.png"
+                width="25px"
+              />
+            </th>
+          </tr>
+        </thead>
+        <tbody id="tbdy"></tbody>
+      </table>
+      <button
+        type="button"
+        id="openlog"
+        class="btn btn-primary btn-circle btn-xl log-btn"
+        onclick="openLogs();"
+      >
+        <img src="/static/images/logs.png" width="65px" />
+      </button>
+    </div>
+
+    <div id="toast">
+      <div class="dialog-box">
+        <div class="header">
+          <div class="contents">
+            <div class="left" id="message"></div>
+            <div class="right" id="time"></div>
+          </div>
+        </div>
+        <div class="contents main-content" id="body"></div>
+      </div>
+    </div>
+
+    <div class="modal" tabindex="-1" id="mymod">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Loading</h5>
+          </div>
+          <div class="modal-body">
+            <p id="loadmsg">Please wait your action is being processed...</p>
+            <div class="spinner-border text-secondary" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" tabindex="-1" id="errmod">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Error</h5>
+          </div>
+          <div class="modal-body">
+            <p id="errmsg"></p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+              onclick="closeErr();"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" tabindex="-1" id="checkmod">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Delete Item</h5>
+          </div>
+          <div class="modal-body">
+            <p id="delmsg">Are you sure you want to delete this map version?</p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+              onclick="closeModal();"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="deleted(this);"
+              id="yesbtn"
+            >
+              Yes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" tabindex="-1" id="undep">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Undeploy Map</h5>
+          </div>
+          <div class="modal-body">
+            <p id="delmsg">
+              Undeploying this map will result in devices associated with this
+              map to be producing a blank screen on their next update.
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+              onclick="undepclose();"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="undeploy(this);"
+              id="depbtn"
+            >
+              Yes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" tabindex="-1" id="logs">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">View Logs</h5>
+            <button
+              type="button"
+              class="btn-close"
+              onclick="closeMod();"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div id="logbody">
+              <select
+                class="form-select"
+                aria-label="Default select example"
+                onchange="getLog(this);"
+              >
+                <option selected>Select a Log File</option>
+                <option value="updates">Update</option>
+                <option value="deploys">Deploy</option>
+                <option value="deletions">Delete</option>
+                <option value="errors">Error</option>
+                <option value="devices">Devices</option>
+              </select>
+              <label for="filter">Filter</label>
+              <select id="filter" class="form-select" onchange="filterList();">
+                <option value="all">All</option>
+              </select>
+              <div id="dlog" style="display: none">
+                <label for="devlog">Log</label>
+                <select
+                  id="devlog"
+                  class="form-select"
+                  onchange="deviceLogs(this);"
+                >
+                  <option selected>Select Log</option>
+                  <option value="activity">Activity</option>
+                  <option value="errors">Error</option>
+                </select>
+              </div>
+              <div id="logcontents">
+                <ul class="list-group list-group-flush" id="loginfo"></ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

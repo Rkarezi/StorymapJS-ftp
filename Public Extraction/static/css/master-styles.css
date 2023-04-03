@@ -1,0 +1,302 @@
+    @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap');
+    * {
+        font-family: 'Roboto Condensed', sans-serif;
+        color: #57595A;
+        font-weight: 800;
+    }
+    .required {
+        border: 2px solid red;
+        border-radius: 10px;
+        outline: red;
+    }
+    .required::placeholder {
+        color: red;
+        opacity: 1;
+    }
+
+    .error {
+        border: 2px solid red;
+        border-radius: 10px;
+        outline: red;
+    }
+    
+    #datatable_wrapper {
+        width: 80%;
+        margin: auto;
+        font-size: 14px;
+        text-align: center;
+    }
+    #datatable_filter {
+        margin: 0;
+        margin-bottom: 20px;
+        width: 50%;
+        float: right;
+
+    }
+    .dataTables_wrapper.no-footer .dataTables_scrollBody {
+        border-bottom: none;
+    }
+    input[type="image"] {
+        margin-right: 4px;
+    }
+    .dataTables_scroll {
+        padding: 0.5em;
+        border: 0.1em solid rgb(200, 200, 200);
+        background-color: rgba(255, 255, 255, 0.9);
+        border-radius: 0.5em;
+        margin-bottom: 20px;
+     
+    }
+    #toast {
+        visibility: hidden;
+        max-width: 0px;
+        height: 90px;
+        margin: auto;
+        position: fixed;
+        z-index: 1;
+        right: 10px;
+        top: 5px;
+        font-size: 17px;
+        white-space: nowrap;
+    }
+    .dialog-box {
+        position: relative;
+        min-height: 65px;
+        max-height: 140px;
+        border-radius: 10px;
+        margin-bottom: 8px;
+        overflow: hidden;
+        box-shadow: 10px 10px 10px rgb(242 242 247);
+        background-color: rgba(174,174,178,0.15);
+    }
+            
+    .dialog-box .header {
+        height: 25px;
+        position: relative;
+        color: black;
+        background-color: rgba(174,174,178,0.15);
+        padding: 0px 0px 0px 0px;
+    }
+            
+
+    .left {
+        float: left;
+        text-align: left;
+        width: content-max;
+        padding: 3px 0 0 10px;
+    }
+
+    .right {
+        float: right;
+        text-align: right;
+        width: content-max;
+        padding: 3px 10px 0 0;
+    }
+
+    .contents {
+        z-index: 100;
+        position: inherit;
+        font-size: 0.6em;
+    }
+
+    .main-content {
+        padding: 5px 5px 5px 5px;
+        height: fit-content;
+        padding-left: 10px;
+        background-color: rgba(174,174,178,0.1);
+    }
+
+    #toast.show {
+        visibility: visible;
+        -webkit-animation: fadein 0.5s, expand 0.5s 0.5s,stay 3s 1s, shrink 0.5s 2s, fadeout 0.5s 2.5s;
+        animation: fadein 0.5s, expand 0.5s 0.5s, stay 3s 1s, shrink 0.5s 4s, fadeout 0.5s 4.5s;
+    }
+
+    input[type="image"] {
+        cursor: default;
+    }
+
+    .log-btn{
+        margin-top: 20px !important; 
+    }
+
+    #logcontents {
+        height: 250px;
+        border: 2px solid grey;
+        border-radius: 5px;
+        margin-top: 30px;
+        margin-bottom: 20px;
+        padding: 20px;
+        overflow-y: scroll;
+    }
+
+    @-webkit-keyframes fadein {
+        from {top: 0; opacity: 0;} 
+        to {top: 5px; opacity: 1;}
+    }
+
+    @keyframes fadein {
+        from {top: 0; opacity: 0;}
+        to {top: 5px; opacity: 1;}
+    }
+
+    @-webkit-keyframes expand {
+        from {min-width: 0px} 
+        to {min-width: 250px}
+    }
+
+    @keyframes expand {
+        from {min-width: 0px}
+        to {min-width: 250px}
+    }
+
+    @-webkit-keyframes stay {
+        from {min-width: 250px} 
+        to {min-width: 250px}
+    }
+
+    @keyframes stay {
+        from {min-width: 250px}
+        to {min-width: 250px}
+    }
+    @-webkit-keyframes shrink {
+        from {min-width: 250px;} 
+        to {min-width: 0px;}
+    }
+
+    @keyframes shrink {
+        from {min-width: 250px;} 
+        to {min-width: 0px;}
+    }
+
+    @-webkit-keyframes fadeout {
+        from {top: 30px; opacity: 1;} 
+        to {top: 5px; opacity: 0;}
+    }
+
+    @keyframes fadeout {
+        from {top: 30px; opacity: 1;}
+        to {top: 5px; opacity: 0;}
+    }
+
+    #interface {
+        height: 90vh;
+        margin: auto;
+        padding-top: 20px;
+        text-align: center;
+    }
+
+    .dataTables_wrapper.no-footer div.dataTables_scrollHead table.dataTable, .dataTables_wrapper.no-footer div.dataTables_scrollBody>table {
+        width: 100% !important;
+    }
+    .dataTables_scrollHeadInner {
+        width: 100% !important;
+    }
+
+    .dataTables_wrapper{
+        max-width: 1300px;
+    }
+    #openlog {
+        background-color: transparent;
+        border: none;
+        border-radius: 40px;
+        outline: none !important;
+        margin: auto;
+        margin-top: -22px;
+        display: none;
+    }
+    button:focus,button:active {
+        outline: none !important;
+        box-shadow: none !important;
+    }
+    #logs, #errmod, #undep, #checkmod {
+        background-color: rgba(20,20,20,0.8);
+    }
+    #mymod {
+        background-color: rgba(20,20,20,0.8);
+        text-align: center;
+    }
+    li {
+        font-size: 2.4vh;
+    }
+    #filter {
+        width: 170px;
+        display: inline;
+        margin-top: 20px;
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+
+    #devlog {
+        width: 130px;
+        display: inline;
+        margin-top: 20px;
+        margin-left: 30px;
+    }
+
+    table {
+        animation: left_to_right 1.8s ease;
+    }
+
+    @keyframes left_to_right {
+    from {
+        margin-left: -100%;
+    }
+    to {
+        margin-left: 0;
+    }
+    }
+.dataTables_length{
+    margin: 0;
+        margin-bottom: 20px;
+        width: 50%;
+        float: left !important;
+        display: flex;
+    }
+    
+
+    .dataTables_wrapper, #openlog {
+        -webkit-animation: fadein2 3s; /* Safari, Chrome and Opera > 12.1 */
+           -moz-animation: fadein2 3s; /* Firefox < 16 */
+            -ms-animation: fadein2 3s; /* Internet Explorer */
+             -o-animation: fadein2 3s; /* Opera < 12.1 */
+                animation: fadein2 3s;
+    }
+
+    #logs, #errmod, #mymod, #undep, #checkmod {
+        -webkit-animation: fadein2 0.6s; /* Safari, Chrome and Opera > 12.1 */
+           -moz-animation: fadein2 0.6s; /* Firefox < 16 */
+            -ms-animation: fadein2 0.6s; /* Internet Explorer */
+             -o-animation: fadein2 0.6s; /* Opera < 12.1 */
+                animation: fadein2 0.6s;
+    }
+    
+    @keyframes fadein2 {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+    }
+    
+    /* Firefox < 16 */
+    @-moz-keyframes fadein2 {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+    }
+    
+    /* Safari, Chrome and Opera > 12.1 */
+    @-webkit-keyframes fadein2 {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+    }
+    
+    /* Internet Explorer */
+    @-ms-keyframes fadein2 {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+    }
+    
+    /* Opera < 12.1 */
+    @-o-keyframes fadein2 {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+    }
+

@@ -1,0 +1,18 @@
+29-09-2021 18:50:48 prototype ReferenceError: mapname is not defined
+01-11-2022 12:32:25 NSW-map SyntaxError: Unexpected token u in JSON at position 91
+01-11-2022 12:50:06 test-map SyntaxError: Unexpected token u in JSON at position 91
+01-11-2022 13:14:42 nsw Error: ENOENT: no such file or directory, lstat '/Users/revan/Desktop/storymap-js-master 2/Public Extraction/storymaps/nsw/backups/V1/published.min.js'
+26-02-2023 19:52:18 sydney Error: ENOENT: no such file or directory, lstat '/Users/revan/Desktop/storymap-js-master 2/Public Extraction/storymaps/sydney/backups/V1/_images'
+26-02-2023 19:53:55 nsw Error: ENOENT: no such file or directory, lstat '/Users/revan/Desktop/storymap-js-master 2/Public Extraction/storymaps/nsw/backups/V1/_images'
+31-03-2023 22:03:38 update SyntaxError: Unexpected token u in JSON at position 91
+31-03-2023 22:06:03 sydney Error: ENOENT: no such file or directory, lstat '/Users/revan/Desktop/storymap-js-master 2/Public Extraction/storymaps/sydney/backups/V1/published.min.js'
+31-03-2023 22:06:09 sydney Error: ENOENT: no such file or directory, lstat '/Users/revan/Desktop/storymap-js-master 2/Public Extraction/storymaps/sydney/backups/V1/_images'
+31-03-2023 22:07:22 sydney Error: ENOENT: no such file or directory, open '/Users/revan/Desktop/storymap-js-master 2/Public Extraction/storymaps/sydney/js/version.json'
+31-03-2023 22:07:37 sydney Error: ENOENT: no such file or directory, open '/Users/revan/Desktop/storymap-js-master 2/Public Extraction/storymaps/sydney/js/version.json'
+31-03-2023 22:12:00 nsw Error: ENOENT: no such file or directory, open '/Users/revan/Desktop/storymap-js-master 2/Public Extraction/storymaps/nsw/js/version.json'
+31-03-2023 22:15:28 newmap SyntaxError: Unexpected token u in JSON at position 91
+31-03-2023 22:17:19 sydney Error: ENOENT: no such file or directory, open '/Users/revan/Desktop/storymap-js-master 2/Public Extraction/storymaps/sydney/js/version.json'
+31-03-2023 22:19:28 aa SyntaxError: Unexpected token u in JSON at position 91
+02-04-2023 09:50:11 mymap SyntaxError: Unexpected token u in JSON at position 91
+02-04-2023 09:52:45 mymap SyntaxError: Unexpected token u in JSON at position 91
+02-04-2023 09:54:28 laksd SyntaxError: Unexpected token u in JSON at position 91
