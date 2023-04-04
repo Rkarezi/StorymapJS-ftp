@@ -10,8 +10,7 @@ The public web server interface will allow the functions of adding, deleting, de
 - [Installation](#installation)
 - [Deployment](#deployment)
 - [How to use](#how-to-use)
-- [Having Problems](#having-problems)
-- [Thanks](#thanks)
+- [Team](#team)
 
 ![StoryMapJS Logo](/images/StoryMapJS.png)
 
